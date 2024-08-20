@@ -1,94 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/cadastro.css" />-->
-    <title>Cadastro Animal</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
 </head>
 
+
 <body>
-    <div class="menu">
-        <a href="#" class="brand"><img src="../img/logo-gato.webp" alt=""></a>
-        <nav>
-            <ul>
-                <li><a href="#">Cidade</a>
-                    <ul>
-                        <li><a href="../Cidade/CadastroCidade.html">Cadastrar</a></li>
-                        <li><a href="../Cidade/ListarCidade.php">Visualizar</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Pessoa</a>
-                    <ul>
-                        <li>
-                            <a href="../Pessoa/CadastroPessoa.php">Cadastrar</a>
-                        </li>
-                        <li>
-                            <a href="../Pessoa/ListarPessoa.php">Visualizar</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#">Animal</a>
-                    <ul>
-                        <li>
-                            <a href="../Animal/CadastroAnimal.php">Cadastrar</a>
-                        </li>
-                        <li>
-                            <a href="../Animal/ListarAnimal.php">Visualizar</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <section>
-        <div class="principal box">
-            <h2>Cadastro Fluxo de Caixa</h2>
-            <form action="cadastro _fluxo de _caixa.php" method="post" enctype="multipart/form-data"> <!-- Codificação para upload -->
-                <!--<div>
-                    <label for="foto">Foto</label>
-                    <input type="file" name="foto" id="foto" accept="image/*"/>
-                </div>-->
-                <div>
-                    <label for="data">data</label>
-                    <input type="text" name="data" id="data" />
-                </div>
-                <div>
-                    <label for="especie">Espécie</label>
-                    <input type="text" name="especie" id="especie" />
-                </div>
-                <div>
-                    <label for="raca">Raça</label>
-                    <input type="text" name="raca" id="raca" />
-                </div>
-                <div>
-                    <label for="data_nascimento">Data de Nascimento ou Adoção</label>
-                    <input type="date" name="data_nascimento" id="data_nascimento" />
-                </div>
-                <div class="inline">
-                    <label>Castrado:</label>
-                    <input type="radio" name="castrado" id="castradoSim" value="1" class="inline" /><label id="castradoSim">Sim</label>
-                    <input type="radio" name="castrado" id="castradoNao" value="0" class="inline" /><label id="castradoNao">Não</label>
-                </div>
-                <div><label for="pessoa">Pessoa</label>
-                    <select name="pessoa" id="pessoa">
-                        <?php
-                        include('../includes/conexao.php');
-                        $sql = "SELECT * FROM pessoa";
-                        $result = mysqli_query($con, $sql);
-                        while ($row = mysqli_fetch_array($result)) {
-                            echo "<option value='" . $row['id'] . "'>" . $row['nome'] . "/" . $row['email'] . "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <button type="submit">Cadastrar</button>
-            </form>
+    <fieldset>
+    <legend><h1> Cadastro de Valores - IFSP</h1></legend>
+    <form action="Cadastro_fluxo_caixa.php" method="POST" enctype="multipart/form-data">
+    
+        <div >
+            <label for="">Data: </label>
+            <input type="date" name="data">
         </div>
-    </section>
+          <div >
+            <label for="">Tipo: </label>
+            <input type="radio" name="tipo" value="Entrada"> Entrada 
+            <input type="radio" name="tipo" value="Saida"> Saída <br>
+
+        </div>
+        <br>
+        <div>
+            <label for="">Valor: </label>
+            <input type="decimal" name="valor">
+        </div>
+        <div>
+            <label for="">Histórico: </label>
+            <input type="text" name="historico">
+        </div>
+        <div>
+            <label for="Cheque">Cheque: </label>
+            <select name="cheque" value="valordefault">
+            <option value="Sim">Sim</option>
+            <option value="Nao">Não</option>
+
+        </div>
+        <input type="submit"  value="enviar">
+
+    </fieldset>
+
+    </form>
 </body>
+
 
 </html>
