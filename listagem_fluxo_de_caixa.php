@@ -1,5 +1,5 @@
 <?php
-    include('conexao.php');
+    include('coneção.php');
     $sql = "SELECT * FROM fluxo_caixa";
     // retorna todos os dados da consulta
     $result = mysqli_query($con, $sql);
@@ -31,9 +31,9 @@
                 echo "<td>".$row['data'] ."</td>";
                 echo "<td>".$row['tipo'] ."</td>";
                 echo "<td>".$row['valor'] ."</td>";
-                echo "<td><a href='Altera_fluxo_caixa.php?id=".$row['id']."'>'".$row['historico']. "</a></td>";
+                echo "<td><a href='Altera_fluxo_de_caixa.php?id=".$row['id']."'>'".$row['historico']. "</a></td>";
                 echo "<td>".$row['cheque'] ."</td>";
-                echo "<td><a href='Excluir_fluxo_caixa.php?id=".$row['id']."'>Excluir</a></td>";
+                echo "<td><a href='excluir_fluxo_caixa.php?id=".$row['id']."'>Excluir</a></td>";
                 echo "</tr>";
             }
          

@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
+<?php
+// LEMBRAR DO ENCTYPE!!
+include("coneção.php");
 
+$sql = "SELECT * FROM fluxo_caixa";
+$tipo = $_POST['radio2'];
+$result = mysqli_query($con, $sql);
+$total=0;
 
-<body>
-    <fieldset>
-    <legend><h1> Consulta</h1></legend>
-
-    <form action="Consulta_fluxo_caixa.php" method="POST"enctype="multipart/form-data">
-    
-        <div>
-            <label for="">Tipo de Consulta: </label>
-            <input type="radio" name="radio2" value="entrada"> Saldo Total
-            <input type="radio" name="radio2" value="saida"> Total Saídas 
-            <input type="radio" name="radio2" value="saldo"> Total Entradas 
-        </div>
-        
-        <br>
-
-        <button type="submit">Enviar</button>
-    </fieldset>
-
-    </form>
-</body>
-
-
-</html>
+if($tipo == 'entrada'){
+    $sql = "select sum(valor) valor from fluxo_caixa where tipo = 'entrada'";
+   
+}else if($tipo == 'saida'){
+    $sql= "select sum(valor) valor from fluxo_caixa where tipo = 'saida'";
+} else if($tipo == 'saldo'){
+    $sql = "select sum(case when tipo = 'entrada' then valor else 0 end) -
+                   sum(case when tipo = 'saida' then valor else 0 end) as valor from fluxo_caixa"; }
+                  
+                   while($row = mysqli_fetch_array($result))
+                   {
+                       $total = $total + $row['valor'] ;
+       
+                   }      
+?>

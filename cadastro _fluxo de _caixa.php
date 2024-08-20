@@ -1,6 +1,6 @@
 <?php
 // LEMBRAR DO ENCTYPE!!
-include("conexao.php");
+include("coneção.php");
 
     $data = $_POST['data'];
     $tipo = $_POST['tipo'];
